@@ -1,49 +1,702 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-
-<head> 
-	<meta charset="UTF-8"> 
-	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
-	<title>Slider with Popup</title> 
-	<link rel="stylesheet" href="./css/style.css"> 
-    <script src="https://kit.fontawesome.com/849ff62128.js" crossorigin="anonymous"></script>
-
-</head> 
-
-<body> 
-
-	<div class="wrap"> 
-        <div class="cardcontainer">
-		<i id="left" class="fa-solid fas fa-angle-left"></i> 
-		<ul class="carousel"> 
-			<li class="card"> 
-				<img src="images/pexels-alina-rossoshanska-338724645-25225807.jpg" alt=""> 
-			</li> 
-			<li class="card"> 
-				<img src= "./images/pexels-chente8888-20847230.jpg" alt="" > 
-				
-			</li> 
-			<li class="card"> 
-				<img src= "./images/pexels-chi-n-ba-3626645-6000789.jpg" alt="">  
-			</li> 
-			<li class="card"> 
-				<img src= "./images/pexels-joelalencar-26890445.jpg" alt=""> 
-			</li> 
-			<li class="card"> 
-				<img src= "./images/pexels-nam-quan-nguy-n-459228913-16889725.jpg" alt=""> 
-			</li> 
-			<li class="card"> 
-				<img src= "./images/pexels-qhung999-25300370.jpg" alt="">  
-			</li> 
-		</ul> 
-		<i id="right" class="fa-solid fas fa-angle-right"></i>
-    </div> 
-        <div class="popup" >
-            <span> &times;</span>
-            <img src="./images/pexels-alina-rossoshanska-338724645-25225807.jpg" alt="">
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शुभ विवाह आमंत्रण पत्र - कृतिका & शिवम्</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-sparkle {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .font-yatra {
+            font-family: 'Yatra One', cursive;
+        }
+    
+    body {
+        font-family: 'Tiro Devanagari Hindi', serif;
+        background-color: var(--wedding-cream);
+        color: #333;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .header-font {
+        font-family: 'Yatra One', cursive;
+    }
+    
+    .card {
+        background-color: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .border-pattern {
+        background-image: repeating-linear-gradient(45deg, var(--wedding-gold) 0, var(--wedding-gold) 1px, transparent 0, transparent 50%);
+        background-size: 10px 10px;
+    }
+    
+    .border-pattern-vertical {
+        background-image: repeating-linear-gradient(90deg, var(--wedding-gold) 0, var(--wedding-gold) 1px, transparent 0, transparent 50%);
+        background-size: 10px 10px;
+    }
+    
+    .ganesh-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+    }
+    
+    .event-card {
+        transition: all 0.3s ease;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    }
+    
+    .diya {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        opacity: 0.8;
+    }
+    
+    .diya-1 {
+        top: 20px;
+        left: 20px;
+        transform: rotate(-15deg);
+    }
+    
+    .diya-2 {
+        top: 20px;
+        right: 20px;
+        transform: rotate(15deg);
+    }
+    
+    .diya-3 {
+        bottom: 20px;
+        left: 20px;
+        transform: rotate(-15deg);
+    }
+    
+    .diya-4 {
+        bottom: 20px;
+        right: 20px;
+        transform: rotate(15deg);
+    }
+    
+    .mandala {
+        position: absolute;
+        opacity: 0.05;
+        z-index: 0;
+    }
+    
+    .mandala-1 {
+        top: 10%;
+        left: 5%;
+        width: 300px;
+        height: 300px;
+    }
+    
+    .mandala-2 {
+        bottom: 10%;
+        right: 5%;
+        width: 300px;
+        height: 300px;
+    }
+    
+    .countdown-container {
+        background: linear-gradient(135deg, var(--wedding-maroon), var(--wedding-red));
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+    }
+    
+    .countdown-box {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        padding: 10px;
+        min-width: 80px;
+    }
+    
+    .tab-active {
+        background-color: var(--wedding-red);
+        color: white;
+    }
+    
+    .tab {
+        transition: all 0.3s ease;
+    }
+    
+    .tab:hover:not(.tab-active) {
+        background-color: #FFF0F0;
+    }
+    
+    .flower-corner {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        opacity: 0.7;
+    }
+    
+    .top-left {
+        top: 0;
+        left: 0;
+        transform: rotate(0deg);
+    }
+    
+    .top-right {
+        top: 0;
+        right: 0;
+        transform: rotate(90deg);
+    }
+    
+    .bottom-left {
+        bottom: 0;
+        left: 0;
+        transform: rotate(270deg);
+    }
+    
+    .bottom-right {
+        bottom: 0;
+        right: 0;
+        transform: rotate(180deg);
+    }
+    
+    .kalash {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    
+    .divider {
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--wedding-gold), transparent);
+        width: 80%;
+        margin: 20px auto;
+    }
+    
+    .heart-divider {
+        position: relative;
+        height: 30px;
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .heart-divider::before, .heart-divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--wedding-gold));
+    }
+    
+    .heart-divider::before {
+        left: 0;
+    }
+    
+    .heart-divider::after {
+        right: 0;
+        background: linear-gradient(90deg, var(--wedding-gold), transparent);
+    }
+    
+    .heart-icon {
+        position: relative;
+        z-index: 1;
+        background-color: var(--wedding-cream);
+        padding: 0 15px;
+        color: var(--wedding-red);
+    }
+    
+    @media (max-width: 768px) {
+        .main-container {
+            padding: 10px;
+        }
+        
+        .mandala {
+            width: 150px;
+            height: 150px;
+        }
+    }
+</style>
+    <svg class="mandala mandala-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="var(--wedding-gold)" d="M100,10 C150,10 190,50 190,100 C190,150 150,190 100,190 C50,190 10,150 10,100 C10,50 50,10 100,10 Z M100,30 C139,30 170,61 170,100 C170,139 139,170 100,170 C61,170 30,139 30,100 C30,61 61,30 100,30 Z M100,50 C128,50 150,72 150,100 C150,128 128,150 100,150 C72,150 50,128 50,100 C50,72 72,50 100,50 Z M100,70 C117,70 130,83 130,100 C130,117 117,130 100,130 C83,130 70,117 70,100 C70,83 83,70 100,70 Z M100,90 C106,90 110,94 110,100 C110,106 106,110 100,110 C94,110 90,106 90,100 C90,94 94,90 100,90 Z"></path>
+    </svg>
+    
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Header -->
+        <div class="card border-8 border-pattern p-1">
+            <div class="bg-gradient-to-r from-red-800 via-red-600 to-red-800 text-center py-8 px-4 relative">
+                <!-- Diya decorations -->
+                <svg class="diya diya-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="gold" d="M50,20 C60,20 70,30 70,40 C70,50 60,60 50,60 C40,60 30,50 30,40 C30,30 40,20 50,20 Z M50,60 L60,90 L40,90 Z"></path>
+                    <circle cx="50" cy="35" r="5" fill="orange"></circle>
+                    <path fill="red" d="M50,30 Q55,20 50,10 Q45,20 50,30"></path>
+                </svg>
+                
+                <svg class="diya diya-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="gold" d="M50,20 C60,20 70,30 70,40 C70,50 60,60 50,60 C40,60 30,50 30,40 C30,30 40,20 50,20 Z M50,60 L60,90 L40,90 Z"></path>
+                    <circle cx="50" cy="35" r="5" fill="orange"></circle>
+                    <path fill="red" d="M50,30 Q55,20 50,10 Q45,20 50,30"></path>
+                </svg>
+                
+                <!-- Ganesh Icon -->
+                <svg class="ganesh-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="gold" d="M50,10 C65,10 75,20 75,35 C75,45 70,50 65,55 C60,60 55,65 55,75 L45,75 C45,65 40,60 35,55 C30,50 25,45 25,35 C25,20 35,10 50,10 Z"></path>
+                    <circle cx="40" cy="30" r="5" fill="white"></circle>
+                    <circle cx="60" cy="30" r="5" fill="white"></circle>
+                    <circle cx="40" cy="30" r="2" fill="black"></circle>
+                    <circle cx="60" cy="30" r="2" fill="black"></circle>
+                    <path fill="gold" d="M50,40 C55,40 60,45 60,50 C60,55 55,60 50,60 C45,60 40,55 40,50 C40,45 45,40 50,40 Z"></path>
+                    <path fill="gold" d="M75,25 C85,20 95,25 95,35 C95,45 85,40 75,35 Z"></path>
+                    <path fill="gold" d="M25,25 C15,20 5,25 5,35 C5,45 15,40 25,35 Z"></path>
+                    <path fill="gold" d="M50,60 L55,75 L45,75 Z"></path>
+                    <path fill="red" d="M45,45 L55,45 L55,50 L45,50 Z"></path>
+                </svg>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-yellow-300 header-font mb-2">शुभ विवाह आमंत्रण पत्र</h1>
+                <h2 class="text-xl md:text-2xl text-white mb-4">|| श्री गणेशाय नमः ||</h2>
+                <h3 class="text-lg md:text-xl text-yellow-200">श्री शिवाय नमस्तुभ्यम्</h3>
+                <p class="text-white mt-4">विवाह संस्कार में आप सपरिवार आमंत्रित हैं।<br>प्रेमपूर्वक पधारें, आशीर्वाद प्रदान करें।</p>
+            </div>
         </div>
-	</div> 
-<script src="./js/scripts.js"></script>
-</body> 
+        
+        <!-- Countdown Timer -->
+        <div class="mt-8 countdown-container">
+            <h3 class="text-xl text-center font-semibold mb-4">विवाह तक का समय</h3>
+            <div class="flex justify-center space-x-4" id="countdown">
+                <div class="countdown-box text-center">
+                    <div class="text-2xl font-bold" id="days">00</div>
+                    <div class="text-xs">दिन</div>
+                </div>
+                <div class="countdown-box text-center">
+                    <div class="text-2xl font-bold" id="hours">00</div>
+                    <div class="text-xs">घंटे</div>
+                </div>
+                <div class="countdown-box text-center">
+                    <div class="text-2xl font-bold" id="minutes">00</div>
+                    <div class="text-xs">मिनट</div>
+                </div>
+                <div class="countdown-box text-center">
+                    <div class="text-2xl font-bold" id="seconds">00</div>
+                    <div class="text-xs">सेकंड</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Couple Names -->
+        <div class="mt-8 card p-6 text-center">
+            <div class="heart-divider">
+                <span class="heart-icon text-2xl">❤️</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-red-800 header-font">कृतिका <span class="text-yellow-600">&</span> शिवम्</h2>
+            <p class="text-lg mt-2">💖 K S (दिल से दिल का मिलन)</p>
+            <div class="heart-divider">
+                <span class="heart-icon text-2xl">❤️</span>
+            </div>
+            <p class="mt-4 text-lg">
+                <span class="font-semibold">श्रीमती. कृतिका</span><br>
+                <span class="text-sm">(सुपुत्री - पं. रविंद्र जी तिवारी, ग्राम - भैंसदेही, तह. भैंसदेही, जिला - बैतूल, म. प्र.)</span>
+            </p>
+            <p class="mt-2 text-xl font-bold text-red-700">विवाह</p>
+            <p class="mt-2 text-lg">
+                <span class="font-semibold">चि. शिवम्</span><br>
+                <span class="text-sm">(सुपुत्र - पं. विनोद जी तिवारी, ग्राम - पाथरी, तह. नरखेड़, जिला - नागपुर, महाराष्ट्र)</span>
+            </p>
+        </div>
+        
+        <!-- Tabs for different sections -->
+        <div class="mt-8">
+            <div class="flex flex-wrap border-b border-gray-300">
+                <button class="tab tab-active px-4 py-2 rounded-t-lg font-medium" onclick="openTab('events')">कार्यक्रम</button>
+                <button class="tab px-4 py-2 rounded-t-lg font-medium" onclick="openTab('family')">परिवार</button>
+                <button class="tab px-4 py-2 rounded-t-lg font-medium" onclick="openTab('venue')">स्थान</button>
+                <button class="tab px-4 py-2 rounded-t-lg font-medium" onclick="openTab('rsvp')">RSVP</button>
+            </div>
+            
+            <!-- Events Tab -->
+            <div id="events" class="tab-content">
+                <h3 class="text-2xl font-bold text-center my-6 text-red-800">मंगलमय क्षण</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Event 1 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-yellow-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">माता पूजन</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 02 जून 2025, सोमवार</p>
+                            <p>🕙 समय: प्रातः 10.00 बजे</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-yellow-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">Khanmitti</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 02 जून 2025, सोमवार</p>
+                            <p>🕓 समय: सायं 04.00 बजे</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-yellow-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">संगीत संध्या</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 04 जून 2025, बुधवार</p>
+                            <p>🕗 समय: सायं 08.00 बजे</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 4 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-yellow-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">मंडप प्रवेश</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 05 जून 2025, गुरुवार</p>
+                            <p>🕓 समय: 04.00 बजे से 06.00 बजे तक</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 5 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-yellow-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">देवी पूजन एवं वर पूजन स्वागत समारोह</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 05 जून 2025, गुरुवार</p>
+                            <p>🕦 समय: प्रातः 11.30 बजे</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 6 -->
+                    <div class="event-card card p-5 bg-gradient-to-br from-white to-red-50">
+                        <div class="flex items-center mb-3">
+                            <svg class="w-10 h-10 text-red-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                            <h4 class="text-xl font-bold ml-3 text-red-800">पाणिग्रहण संस्कार एवं स्वस्तिवाचन</h4>
+                        </div>
+                        <div class="ml-13 pl-2 border-l-2 border-yellow-500">
+                            <p>📅 06 जून 2025, शुक्रवार</p>
+                            <p>🕗 समय: रात्रि 08.00 बजे से अनवरत</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Family Tab -->
+            <div id="family" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-center my-6 text-red-800">स्वागतोल्लास</h3>
+                
+                <div class="card p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-red-700 mb-3">परिवार</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>पं. रमेश जी शर्मा एवं परिवार (मोहगांव)</li>
+                                <li>पं. संतोष जी जोशी व परिवार (नागपुर)</li>
+                                <li>पं. रामबिहारी जी शर्मा व परिवार (सिवनी)</li>
+                                <li>पं. संजीव जी शर्मा व परिवार (बैतूल)</li>
+                                <li>पं. विनोद जी शर्मा व परिवार (भोपाल)</li>
+                                <li>पं. विनोद जी उपाध्याय व परिवार (पाटन)</li>
+                                <li>पं. आशीष जी मिश्रा व परिवार (नरसिंहपुर)</li>
+                                <li>पं. महेन्द्र जी मिश्रा व परिवार (उज्जैन)</li>
+                            </ul>
+                            <p class="mt-2 font-medium">एवं समस्त श्री तिवारी परिवार</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold text-red-700 mb-3">प्रतिवक्ता</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>पं. दिनेश जी तिवारी</li>
+                                <li>पं. राजेन्द्र जी तिवारी</li>
+                                <li>पं. शैलेन्द्र जी तिवारी</li>
+                                <li>पं. नरेन्द्र जी तिवारी</li>
+                                <li>पं. अशोक जी तिवारी</li>
+                                <li>पं. विष्णु जी तिवारी</li>
+                                <li>पं. पंकज (आदित्य) मैनु तिवारी</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="text-xl font-semibold text-red-700 mb-3">विनीत</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>पं. श्यामनारायण तिवारी</li>
+                                <li>पं. रमेश तिवारी</li>
+                                <li>पं. रमेश तिवारी</li>
+                                <li>पं. प्रवीण तिवारी</li>
+                                <li>पं. विनोद तिवारी</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-xl font-semibold text-red-700 mb-3">बाल मनुहर</h4>
+                            <p>आस्था (chemist), रिया (BTech), वेद, आराध्या, दिशा, तिवारी, आयुषी तिवारी, पंखुड़ी तिवारी, आराध्या गुप्ता, जान्हवी गुप्ता, हरिओम तिवारी, अंकित तिवारी, हर्षित तिवारी, रिद्धि, सिद्धि, हर्ष पाटी</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Venue Tab -->
+            <div id="venue" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-center my-6 text-red-800">विवाह स्थल</h3>
+                
+                <div class="card p-6">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-1/2 p-4">
+                            <svg class="w-full h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Simple venue illustration -->
+                                <rect x="20" y="100" width="160" height="80" fill="#f8d7da" stroke="#800000" stroke-width="2"></rect>
+                                <path d="M20,100 L100,50 L180,100" fill="#800000" stroke="#800000" stroke-width="2"></path>
+                                <rect x="80" y="140" width="40" height="40" fill="#fff" stroke="#800000" stroke-width="2"></rect>
+                                <line x1="80" y1="160" x2="120" y2="160" stroke="#800000" stroke-width="2"></line>
+                                <line x1="100" y1="140" x2="100" y2="180" stroke="#800000" stroke-width="2"></line>
+                                <circle cx="50" cy="130" r="10" fill="#D4AF37"></circle>
+                                <circle cx="150" cy="130" r="10" fill="#D4AF37"></circle>
+                                <path d="M30,100 C30,80 50,70 70,70 C90,70 110,80 110,100" fill="none" stroke="#D4AF37" stroke-width="2"></path>
+                                <path d="M90,100 C90,80 110,70 130,70 C150,70 170,80 170,100" fill="none" stroke="#D4AF37" stroke-width="2"></path>
+                            </svg>
+                        </div>
+                        <div class="w-full md:w-1/2 p-4">
+                            <h4 class="text-xl font-bold text-red-800 mb-3">उमा गार्डन लॉन</h4>
+                            <p class="mb-2">रेलवे मीटर गेज, भैंसदेही, जिला - बैतूल</p>
+                            
+                            <div class="mt-6">
+                                <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded flex items-center" onclick="openMap()">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    नक्शे पर देखें
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RSVP Tab -->
+            <div id="rsvp" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-center my-6 text-red-800">कृपया अपनी उपस्थिति की पुष्टि करें</h3>
+                
+                <div class="card p-6">
+                    <form id="rsvpForm" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">नाम</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="अपना नाम दर्ज करें">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">मोबाइल नंबर</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="अपना मोबाइल नंबर दर्ज करें">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="guests">अतिथियों की संख्या</label>
+                            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="guests">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="more">5 से अधिक</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">किन कार्यक्रमों में आप उपस्थित होंगे?</label>
+                            <div class="space-y-2">
+                                <div>
+                                    <input type="checkbox" id="event1" class="mr-2">
+                                    <label for="event1">माता पूजन (02 जून)</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="event2" class="mr-2">
+                                    <label for="event2">Khanmitti (02 जून)</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="event3" class="mr-2">
+                                    <label for="event3">संगीत संध्या (04 जून)</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="event4" class="mr-2">
+                                    <label for="event4">मंडप प्रवेश (05 जून)</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="event5" class="mr-2">
+                                    <label for="event5">देवी पूजन एवं वर पूजन (05 जून)</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="event6" class="mr-2">
+                                    <label for="event6">पाणिग्रहण संस्कार (06 जून)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="message">संदेश (वैकल्पिक)</label>
+                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="3" placeholder="नवदंपति के लिए आपका संदेश"></textarea>
+                        </div>
+                        
+                        <div class="flex items-center justify-center">
+                            <button class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="button" onclick="submitRSVP()">
+                                पुष्टि करें
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="mt-8 card p-6">
+            <h3 class="text-xl font-bold text-center text-red-800 mb-4">संपर्क करें</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="text-center">
+                    <h4 class="font-semibold">प्रेषक</h4>
+                    <p>पं. वीरेंद्र जी (छोटे) तिवारी</p>
+                    <p>पं. शैलेन्द्र जी तिवारी</p>
+                    <p>पं. रविन्द्र जी तिवारी</p>
+                </div>
+                
+                <div class="text-center">
+                    <h4 class="font-semibold">निवासी</h4>
+                    <p>तिवारी मोहल्ला माँ पूर्णा वार्ड</p>
+                    <p>नं. 11 भैंसदेही, तह. - भैंसदेही</p>
+                    <p>जिला - बैतूल (म.प्र.)</p>
+                    <p class="mt-2">📞 मोबाइल: 9424242155, 8962483820, 7047787086</p>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="text-center">
+                <h4 class="font-semibold mb-2">प्रतिष्ठान</h4>
+                <p>तिवारी पान मटेरियल भैंसदेही</p>
+                <p>तिवारी टूर एंड ट्रैवल्स भैंसदेही</p>
+                <p>तिवारी क्रुशी फार्म भैंसदेही</p>
+                <p>तिवारी ई-वेन्ट मैनेजर भैंसदेही</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-8 text-center">
+            <p class="text-red-800 font-semibold">तिवारी परिवार का स्नेहिल आमंत्रण</p>
+            <p class="text-sm mt-2">शुभविवाह - 06 जून 2025, शुक्रवार</p>
+        </div>
+    </div>
+</div>
 
-</html>
+<script>
+    // Tab functionality
+    function openTab(tabName) {
+        const tabContents = document.getElementsByClassName("tab-content");
+        for (let i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.add("hidden");
+        }
+        
+        const tabs = document.getElementsByClassName("tab");
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove("tab-active");
+        }
+        
+        document.getElementById(tabName).classList.remove("hidden");
+        event.currentTarget.classList.add("tab-active");
+    }
+    
+    // Countdown timer
+    function updateCountdown() {
+        const weddingDate = new Date("June 6, 2025 20:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+    }
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // Map function
+    function openMap() {
+        // This would normally open a map with the venue location
+        alert("नक्शा देखने के लिए धन्यवाद! वास्तविक वेबसाइट पर यह Google Maps पर स्थान दिखाएगा।");
+    }
+    
+    // RSVP form submission
+    function submitRSVP() {
+        const name = document.getElementById("name").value;
+        if (!name) {
+            alert("कृपया अपना नाम दर्ज करें");
+            return;
+        }
+        
+        const phone = document.getElementById("phone").value;
+        if (!phone) {
+            alert("कृपया अपना मोबाइल नंबर दर्ज करें");
+            return;
+        }
+        
+        alert(`धन्यवाद ${name}! आपकी उपस्थिति की पुष्टि हो गई है। हम आपका स्वागत करने के लिए उत्साहित हैं!`);
+        document.getElementById("rsvpForm").reset();
+    }
+</script>
